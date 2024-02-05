@@ -13,34 +13,36 @@ import java.io.PrintWriter;
 public class FormServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws SecurityException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws SecurityException, IOException, NumberFormatException {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
-        int age = Integer.parseInt(request.getParameter("age"));
+        String age = request.getParameter("age");
 
-        Person person = new Person(name, phone, email, age);
-        PrintWriter writer=response.getWriter();
-        writer.println();
+        PrintWriter writer = response.getWriter();
+
         writer.println("<html>");
-        writer.println("<head><title>Результат анкети</title></head>");
+        writer.println("<head><title>Form Result </title></head>");
+        writer.println("<body style='background-color: #76b852; color: #FFFFFFFF; font-family: Roboto'>");
         writer.println("<body>");
-        writer.println("<h2>Ваші дані:</h2>");
-        writer.println("<p><b>ПІБ:</b> " + name + "</p>");
-        writer.println("<p><b>Телефон:</b> " + phone + "</p>");
-        writer.println("<p><b>Email:</b> " + email + "</p>");
-        writer.println("<p><b>Вік:</b> " + age + "</p>");
+        try {
+            Person person = new Person(name, phone, email, age);
+            writer.println("<h2>Your profile:</h2>");
+            writer.println("<p><b>Name, Lastname:</b> " + person.getName() + "</p>");
+            writer.println("<p><b>Phone Number:</b> " + person.getPhone() + "</p>");
+            writer.println("<p><b>Email:</b> " + person.getEmail() + "</p>");
+            writer.println("<p><b>Age:</b> " + person.getAge() + "</p>");
+
+        } catch (NumberFormatException e) {
+            writer.println("<p style='color:red;'>Wrong age. Use digital.</p>");
+        }
+
         writer.println("</body>");
         writer.println("</html>");
-
-
     }
 
-
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws SecurityException, IOException {
-        PrintWriter out = response.getWriter();
-        out.println("<h1>Home</h1>");
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
     }
 }

@@ -4,4 +4,35 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+
+  <servlet>
+    <servlet-name>HomeServlet</servlet-name>
+    <servlet-class>Lesson1.HomeServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>MultyplyTable</servlet-name>
+    <servlet-class>Lesson1.MultyplyTable</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>FormServlet</servlet-name>
+    <servlet-class>HomeWork1.Task04.FormServlet</servlet-class>
+  </servlet>
+
+<servlet-mapping>
+  <servlet-name>HomeServlet</servlet-name>
+  <url-pattern>/home</url-pattern>
+</servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>MultyplyTable</servlet-name>
+    <url-pattern>/task2</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>FormServlet</servlet-name>
+    <url-pattern>/person-form</url-pattern>
+  </servlet-mapping>
+
 </web-app>
