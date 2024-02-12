@@ -9,10 +9,10 @@ import java.time.LocalTime;
 
 public class Server {
 
-        static final int port = 1234;
-        public static void main(String[] args) throws IOException {
+    static final int port = 1234;
+    public static void main(String[] args) throws IOException {
 
-       try(ServerSocket server = new ServerSocket(port)){
+        try(ServerSocket server = new ServerSocket(port)){
             System.out.println("Сервер запущено");
             Socket client = server.accept();
             System.out.println("Клієнт підключився: " + client.getInetAddress());
@@ -35,12 +35,12 @@ public class Server {
             server.close();
             System.out.println("Сервер завершив роботу");
         }
-       catch (IOException e) {
-           System.out.println("Помилка з'єднання: " + e.getMessage());
-       }
-
+        catch (IOException e) {
+            System.out.println("Помилка з'єднання: " + e.getMessage());
         }
+
     }
+}
 
 
 
