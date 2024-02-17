@@ -42,4 +42,4 @@ inner join academyhw3.lectures l on teachers.id_teachers = l.teachersId
 inner join academyhw3.subjects s on l.subjectsId = s.id_subjects
 inner join academyhw3.groups_lectures gl on l.id_lectures = gl.lecturesId
 inner join academyhw3.`groups` g on gl.groupsId = g.id_groups
-where lecturesRoom = '102';
+where l.lecturesRoom = '102';
